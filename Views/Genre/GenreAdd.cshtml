@@ -1,0 +1,49 @@
+﻿@model MovieApp.Models.ViewModels.GenreViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Tür Ekle</title>
+</head>
+<body>
+    <div class="container">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align:center;">TÜR KAYIT FORMU</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        @using (Html.BeginForm())
+                        {
+                            <b>Tür Adı:</b>
+                            @Html.TextBoxFor(x => x.GenreName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GenreName, "", new { @style = "color:red" })
+
+                            <b>Status:</b>
+                            @Html.DropDownListFor(x => x.Status, (List<SelectListItem>)ViewBag.Statuses, "--Lütfen Durum Seçin--", new { @class = "form-control" })
+                            
+
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary">Kaydet</button>
+                                <a href="/genre/index" class="btn btn-warning">İptal</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('#myModal').modal({ backdrop: 'static', keyboard: false, show: true });
+    });
+</script>

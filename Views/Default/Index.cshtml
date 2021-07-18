@@ -1,0 +1,287 @@
+﻿@model MovieApp.Models.ViewModels.MultiViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- home -->
+<section class="home">
+    <!-- home bg -->
+    <div class="owl-carousel home__bg">
+        <div class="item home__cover" style="background:url(https://wallpapershome.com/images/pages/pic_h/21130.jpg)"></div>
+        <div class="item home__cover" style="background:url(https://wallpapershome.com/images/pages/pic_h/22520.jpg)"></div>
+        <div class="item home__cover" style="background:url(https://wallpapershome.com/images/pages/pic_h/17889.jpg)"></div>
+        <div class="item home__cover" style="background:url(https://wallpapershome.com/images/pages/pic_h/22167.jpg)"></div>
+    </div>
+    <!-- end home bg -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="home__title"><b>SON</b> EKLENENLER </h1>
+
+                <button class="home__nav home__nav--prev" type="button">
+                    <i class="icon ion-ios-arrow-round-back"></i>
+                </button>
+                <button class="home__nav home__nav--next" type="button">
+                    <i class="icon ion-ios-arrow-round-forward"></i>
+                </button>
+            </div>
+
+            <div class="col-12">
+                <div class="owl-carousel home__carousel">
+
+                    <!-- Son eklenen 6 film -->
+                    @foreach (var item in Model.movieViewModels.Reverse().Take(6))
+                    {
+                        <div class="item">
+                            <div class="card card--big">
+                                <div class="card__cover">
+                                    <img id="bigImages" src="@item.ImageURL" alt="">
+                                    <a href="/Default/MovieDetails/@item.Id" class="card__play">
+                                        <i class="icon ion-ios-play"></i>
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title"><a href="/Default/MovieDetails/@item.Id">@item.Name</a></h3>
+                                    <span class="card__category">
+                                        <a href="/Default/MoviesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                    </span>
+                                    <ul class="card__list" id="rate">
+                                        <li>IMDB :  @item.Rating</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Son eklenen 6 dizi -->
+                    @foreach (var item in Model.seriesViewModels.Reverse().Take(6))
+                    {
+                        <div class="item">
+                            <div class="card card--big">
+                                <div class="card__cover">
+                                    <img id="bigImages" src="@item.ImageURL" alt="">
+                                    <a href="/Default/SeriesDetails/@item.Id" class="card__play">
+                                        <i class="icon ion-ios-play"></i>
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title"><a href="/Default/SeriesDetails/@item.Id">@item.Name</a></h3>
+                                    <span class="card__category">
+                                        <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                    </span>
+                                    <ul class="card__list" id="rate">
+                                        <li>IMDB :  @item.Rating</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<!-- content -->
+<section class="content">
+    <div class="content__head">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="content__title">Son Eklenen 12 İçerik</h2>
+                    <!-- content tabs nav -->
+                    <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Tümü</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Film</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Dizi</a>
+                        </li>
+
+                    </ul>
+                    <!-- end content tabs nav -->
+                    <!-- content mobile tabs nav -->
+                    <div class="content__mobile-tabs" id="content__mobile-tabs">
+                        <div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <input type="button" value="New items">
+                            <span></span>
+                        </div>
+
+                        <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Tümü</a></li>
+
+                                <li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Film</a></li>
+
+                                <li class="nav-item"><a class="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Dizi</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end content mobile tabs nav -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- content tabs -->
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+                <div class="row">
+                    <!-- card -->
+                    <!-- Son eklenen 6 film -->
+                    @foreach (var item in Model.movieViewModels.Reverse().Take(6))
+                    {
+                        <div class="col-6 col-sm-12 col-lg-6">
+                            <div class="card card--list">
+                                <div class="row">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="card__cover">
+                                            <img id="images" src="@item.ImageURL" alt="">
+                                            <a href="/Default/MovieDetails/@item.Id" class="card__play">
+                                                <i class="icon ion-ios-play"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-8">
+                                        <div class="card__content">
+                                            <h3 class="card__title"><a href="/Default/MovieDetails/@item.Id">@item.Name</a></h3>
+                                            <span class="card__category">
+                                                <a href="/default/Movies">Film</a>
+                                                <a href="/Default/MoviesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                            </span>
+                                            <div class="card__wrap">
+                                                <ul class="card__list" id="rate">
+                                                    <li>IMDB :  @item.Rating</li>
+                                                </ul>
+                                                <ul class="card__list">
+                                                    <li>Kitle :  @item.AgeRestriction</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card__description">
+                                                <p id="description">@item.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Son eklenen 6 dizi -->
+                    @foreach (var item in Model.seriesViewModels.Reverse().Take(6))
+                    {
+                        <div class="col-6 col-sm-12 col-lg-6">
+                            <div class="card card--list">
+                                <div class="row">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="card__cover">
+                                            <img id="images" src="@item.ImageURL" alt="">
+                                            <a href="/Default/SeriesDetails/@item.Id" class="card__play">
+                                                <i class="icon ion-ios-play"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-8">
+                                        <div class="card__content">
+                                            <h3 class="card__title"><a href="/Default/SeriesDetails/@item.Id">@item.Name</a></h3>
+                                            <span class="card__category">
+                                                <a href="/default/Series">Dizi</a>
+                                                <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                            </span>
+                                            <div class="card__wrap">
+                                                <ul class="card__list" id="rate">
+                                                    <li>IMDB :  @item.Rating</li>
+                                                </ul>
+                                                <ul class="card__list">
+                                                    <li>Kitle :  @item.AgeRestriction</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="card__description">
+                                                <p id="description">@item.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- end card -->
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
+                <div class="row">
+                    <!-- card -->                    
+                    <!-- Son eklenen 12 film -->
+                    @foreach (var item in Model.movieViewModels.Reverse().Take(12))
+                    {
+                        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                            <div class="card">
+                                <div class="card__cover">
+                                    <img id="images" src="@item.ImageURL" alt="">
+                                    <a href="/Default/MovieDetails/@item.Id" class="card__play">
+                                        <i class="icon ion-ios-play"></i>
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title"><a href="/Default/MovieDetails/@item.Id">@item.Name</a></h3>
+                                    <span class="card__category">
+                                        <a href="/Default/MoviesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                    </span>
+                                    <ul class="card__list" id="rate">
+                                        <li>IMDB :  @item.Rating</li>
+                                    </ul>                                
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- end card -->
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
+                <div class="row">
+                    <!--card-->
+                    <!--Son eklenen 12 dizi-->
+                    @foreach (var item in Model.seriesViewModels.Reverse().Take(12))
+                    {
+                        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                            <div class="card">
+                                <div class="card__cover">
+                                    <img id="images" src="@item.ImageURL" alt="">
+                                    <a href="/Default/SeriesDetails/@item.Id" class="card__play">
+                                        <i class="icon ion-ios-play"></i>
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title"><a href="/Default/SeriesDetails/@item.Id">@item.Name</a></h3>
+                                    <span class="card__category">
+                                        <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                    </span>
+                                    <ul class="card__list" id="rate">
+                                        <li>IMDB :  @item.Rating</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!--end card-->
+                </div>
+            </div>
+        </div>
+        <!-- end content tabs -->
+    </div>
+</section>
+<!-- end content -->

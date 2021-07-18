@@ -1,0 +1,95 @@
+﻿@model MovieApp.Models.ViewModels.SeriesViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Dizi Ekle</title>
+</head>
+<body>
+    <div class="container">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align:center;">DİZİ KAYIT FORMU</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        @using (Html.BeginForm())
+                        {
+                            <b>Adı:</b>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+                            <b>Çıkış Yılı:</b>
+                            @Html.ValidationMessageFor(model => model.ReleaseYear, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.ReleaseYear, new { @class = "form-control" })
+
+                            <b>Türü:</b>
+                            @Html.ValidationMessageFor(model => model.GenreId, "", new { @style = "color:red" })
+                            @Html.DropDownListFor(x => x.GenreId, (List<SelectListItem>)ViewBag.gnrs, "--Lütfen Tür Seçin--", new { @class = "form-control" })
+
+                            <b>Sezon:</b>
+                            @Html.ValidationMessageFor(model => model.Season, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Season, new { @class = "form-control" })
+
+                            <b>Durum:</b>
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+
+                            <b>Değerlendirme:</b>
+                            @Html.ValidationMessageFor(model => model.Rating, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Rating, new { @class = "form-control" })
+
+                            <b>Kitle:</b>
+                            @Html.ValidationMessageFor(model => model.AgeRestriction, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.AgeRestriction, new { @class = "form-control" })
+
+                            <b>Yönetmen:</b>
+                            @Html.ValidationMessageFor(model => model.Director, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Director, new { @class = "form-control" })
+
+                            <b>Senarist:</b>
+                            @Html.ValidationMessageFor(model => model.Writer, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Writer, new { @class = "form-control" })
+
+                            <b>Oyuncular:</b>
+                            @Html.ValidationMessageFor(model => model.Cast, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.Cast, new { @class = "form-control" })
+
+                            <b>Açıklama:</b>
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color:red" })
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+
+                            <b>ImageURL:</b>
+                            @Html.ValidationMessageFor(model => model.ImageURL, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.ImageURL, new { @class = "form-control" })
+
+                            <b>VideoURL:</b>
+                            @Html.ValidationMessageFor(model => model.VideoURL, "", new { @style = "color:red" })
+                            @Html.TextBoxFor(x => x.VideoURL, new { @class = "form-control" })
+
+                            <b>BackgroundURL:</b>
+                            @Html.TextBoxFor(x => x.BackgroundURL, new { @class = "form-control" })
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary">Kaydet</button>
+                                <a href="/Series/index" class="btn btn-danger">İptal</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('#myModal').modal({ backdrop: 'static', keyboard: false, show: true });
+    });
+</script>

@@ -1,0 +1,176 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/Movies/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="~/Movies/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Movies/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Movies/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/Movies/css/nouislider.min.css">
+    <link rel="stylesheet" href="~/Movies/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Movies/css/plyr.css">
+    <link rel="stylesheet" href="~/Movies/css/photoswipe.css">
+    <link rel="stylesheet" href="~/Movies/css/default-skin.css">
+    <link rel="stylesheet" href="~/Movies/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="~/Movies/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="~/Movies/icon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Movies/icon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Movies/icon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Movies/icon/apple-touch-icon-144x144.png">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Dmitry Volkov">
+    <title>MovieApp – Online Movies</title>
+
+</head>
+<body class="body">
+
+    <!-- header -->
+    <header class="header">
+        <div class="header__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header__content">
+                            <!-- header logo -->
+                            <a href="#" class="header__logo">
+                                <img src="~/Movies/img/Movie_app1.jpg" alt="">
+                            </a>
+                            <!-- end header logo -->
+                            <!-- header nav -->
+                            <ul class="header__nav">
+                                <li class="header__nav-item">
+                                    <a style="margin-left:69px;" class="dropdown-toggle header__nav-link" href="/default/index" role="button" aria-haspopup="false" aria-expanded="true">Ana Sayfa</a>
+                                </li>
+                                <!-- dropdown Film Türleri-->
+                                <li class="header__nav-item">
+                                    <a class="dropdown-toggle header__nav-link" href="/default/movies" role="button" aria-haspopup="true" aria-expanded="false">Filmler</a>
+                                </li>
+                                <!-- end dropdown -->
+
+                                <li class="header__nav-item">
+                                    <a class="dropdown-toggle header__nav-link" href="/default/series" role="button" aria-haspopup="true" aria-expanded="false">Diziler</a>
+                                </li>
+                                <!-- end dropdown -->
+
+                                <!-- dropdown -->
+                                <li class="dropdown header__nav-item">
+                                    <a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon ion-ios-more"></i></a>
+
+                                    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
+                                        <li><a href="/Admin/Index">Yönetici Paneli</a></li>
+                                    </ul>
+                                </li>
+                                <!-- end dropdown -->
+                            </ul>
+                            <!-- end header nav -->
+                            <!-- header auth -->
+                            <div class="header__auth">
+                                <a href="/Admin/Login" class="header__sign-in">
+                                    <i class="icon ion-ios-log-in"></i>
+                                    <span>Giriş</span>
+                                </a>
+                            </div>
+                            <!-- end header auth -->
+                            <!-- header menu btn -->
+                            <button class="header__btn" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <!-- end header menu btn -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    <!-- body -->
+    @RenderBody()
+    <!-- end body -->
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- footer list -->
+                <div class="col-12 col-md-3">
+                    <h6 class="footer__title">Uygulamamızı İndirin</h6>
+                    <ul class="footer__app">
+                        <li><a href="https://www.apple.com/tr/app-store/"><img src="~/Movies/img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
+                        <li><a href="https://play.google.com/store?hl=tr&gl=US"><img src="~/Movies/img/google-play-badge.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <!-- end footer list -->
+                <!-- footer list -->
+                <div class="col-6 col-sm-4 col-md-3">
+                    <h6 class="footer__title">İçerik</h6>
+                    <ul class="footer__list">
+                        <li><a href="/default/movies">Filmler</a></li>
+                        <li><a href="/default/series">Diziler</a></li>
+                    </ul>
+                </div>
+                <!-- end footer list -->
+                <!-- footer list -->
+                <div class="col-6 col-sm-4 col-md-3">
+                    <h6 class="footer__title">Yasal</h6>
+                    <ul class="footer__list">
+                        <li><a href="/default/UserAgreement">Kullanıcı Sözleşmesi</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                    </ul>
+                </div>
+                <!-- end footer list -->
+                <!-- footer list -->
+                <div class="col-12 col-sm-4 col-md-3">
+                    <h6 class="footer__title">İletişim</h6>
+                    <ul class="footer__list">
+                        <li><a href="tel:+18002345678">+90 (555) 555 55 55</a></li>
+                        <li><a href="mailto:kanyelele@kekw">kanyelele@kekw</a></li>
+                    </ul>
+                    <ul class="footer__social">
+                        <li class="facebook"><a href="https://tr-tr.facebook.com"><i class="icon ion-logo-facebook"></i></a></li>
+                        <li class="instagram"><a href="https://www.instagram.com/?hl=tr"><i class="icon ion-logo-instagram"></i></a></li>
+                        <li class="twitter"><a href="https://twitter.com/?lang=tr"><i class="icon ion-logo-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <!-- end footer list -->
+                <!-- footer copyright -->
+                <div class="col-12">
+                    <div class="footer__copyright">
+                        <ul>
+                            <li><a href="#">MovieApp © 2021</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end footer copyright -->
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- JS -->
+    <script src="~/Movies/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Movies/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Movies/js/owl.carousel.min.js"></script>
+    <script src="~/Movies/js/jquery.mousewheel.min.js"></script>
+    <script src="~/Movies/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="~/Movies/js/wNumb.js"></script>
+    <script src="~/Movies/js/nouislider.min.js"></script>
+    <script src="~/Movies/js/plyr.min.js"></script>
+    <script src="~/Movies/js/jquery.morelines.min.js"></script>
+    <script src="~/Movies/js/photoswipe.min.js"></script>
+    <script src="~/Movies/js/photoswipe-ui-default.min.js"></script>
+    <script src="~/Movies/js/main.js"></script>
+</body>
+
+</html>

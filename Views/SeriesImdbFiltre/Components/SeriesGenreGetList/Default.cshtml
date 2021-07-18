@@ -1,0 +1,5 @@
+﻿@model IEnumerable<MovieApp.Models.ViewModels.GenreViewModel>
+<!-- genre list -->
+@foreach (var item in Model)
+{
+<li><a href="/Default/SeriesGenre/@item.GenreId">@item.GenreName</a></li>}

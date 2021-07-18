@@ -1,0 +1,125 @@
+﻿
+
+@model IEnumerable<MovieApp.Models.ViewModels.SeriesViewModel>
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<!-- page title -->
+<section class="section section--first section--bg" data-bg="img/section/section.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section__wrap">
+                    <!-- section title -->
+                    <h2 class="section__title">Dizi Kataloğu</h2>
+                    <!-- end section title -->
+                    <!-- breadcrumb -->
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb__item"><a href="/default/index">Ana Sayfa</a></li>
+                        <li class="breadcrumb__item"><a href="/default/Series">Diziler</a></li>
+                        <li class="breadcrumb__item breadcrumb__item--active">IMDB</li>
+                    </ul>
+                    <!-- end breadcrumb -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+<!-- filter -->
+<div class="filter">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="filter__content">
+                    <div class="filter__items">
+                        <!-- filter item -->
+                        <div class="filter__item" id="filter__genre">
+                            <span class="filter__item-label">TÜR:</span>
+
+                            <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <input type="button" value="Tür Seç">
+                                <span></span>
+                            </div>
+
+                            <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
+                                <!-- genre list -->
+                                @await Component.InvokeAsync("SeriesGenreGetList")
+                            </ul>
+                        </div>
+                        <!-- end filter item -->
+                        <!-- filter item -->
+                        <div class="filter__item" id="filter__quality">
+                            <span class="filter__item-label">IMDB:</span>
+
+                            <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-quality" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <input type="button" value="Puanlar">
+                                <span></span>
+                            </div>
+
+                            <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-quality">
+                                <li><a href="/SeriesImdbFiltre/ImdbOne">0,0 - 2,5</a></li>
+                                <li><a href="/SeriesImdbFiltre/ImdbTwo">2,5 - 5,0</a></li>
+                                <li><a href="/SeriesImdbFiltre/ImdbThree">5,0 - 7,5</a></li>
+                                <li><a href="/SeriesImdbFiltre/ImdbFour">7,5 - 10,0</a></li>
+                            </ul>
+                        </div>
+                        <!-- end filter item -->
+                        <!-- filter item -->
+                        <div class="filter__item" id="filter__rate">
+
+                            @using (Html.BeginForm())
+                            {
+                                <div>
+                                    @Html.TextBox("search", null, new { @class = "form-control-search", @placeholder = "Dizi adı ile ara.." })
+                                </div>
+                            }
+                        </div>
+                        <!-- end filter item -->
+                    </div>
+                    <!-- filter btn -->
+					<button class="filter__btn" onclick="document.location='/default/series'" >Filtreyi Temizle</button>
+					<!-- end filter btn -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end filter -->
+<!-- catalog -->
+<div class="catalog">
+    <div class="container">
+        <div class="row">
+            <!-- card -->
+            @foreach (var item in Model)
+            {
+                if (item.Rating >= 2.5 && item.Rating < 5)
+                {
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img id="images" src="@item.ImageURL" alt="">
+                                <a href="/Default/SeriesDetails/@item.Id" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="/Default/SeriesDetails/@item.Id">@item.Name</a></h3>
+                                <span class="card__category">
+                                    <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                </span>
+                                <ul class="card__list" id="rate">
+                                    <li>IMDB :  @item.Rating</li>
+                                </ul>                            
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <!-- end card -->
+
+        </div>
+    </div>
+</div>
+<!-- end catalog -->

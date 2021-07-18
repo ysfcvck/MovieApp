@@ -1,0 +1,38 @@
+﻿@model List<MovieApp.Models.ViewModels.MovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<title>Film Listesi</title>
+<a style="float:left; font-size:inherit; color:#36b9bf;" href="/Movie/MovieAdd">▹Film Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Adı </th>
+            <th> Türü </th>
+            <th> Çıkış Yılı </th>
+            <th> Süre </th>
+            <th> Puan </th>
+            <th> Kitle </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                <td> @Html.DisplayFor(modelItem => item.Name) </td>
+                <td> @Html.DisplayFor(modelItem => item.Genre.GenreName)</td>
+                <td> @Html.DisplayFor(modelItem => item.ReleaseYear) </td>
+                <td> @Html.DisplayFor(modelItem => item.Time) </td>
+                <td> @Html.DisplayFor(modelItem => item.Rating) </td>
+                <td> @Html.DisplayFor(modelItem => item.AgeRestriction) </td>
+
+                <td>@Html.ActionLink("Detaylar / Düzenle", "MovieGet", new { id = item.Id }, new { @class = "btn btn-primary" })</td>
+
+                <td>@Html.ActionLink("Sil", "MovieRemove", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('U Y A R I   |   Kayıt silinmek üzere..');" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

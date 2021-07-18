@@ -1,0 +1,227 @@
+﻿@model MovieApp.Models.ViewModels.MultiViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Average == null)
+{
+<style>
+    #avg{
+        margin-left:0;
+    }
+</style>
+}
+<!-- details -->
+<section class="section details">
+    <div class="details__bg" style="background:url(@ViewBag.imageUrl)"></div>
+    <!-- details content -->
+    <div class="container">
+        <div class="row">
+           @foreach (var item in Model.seriesViewModels)
+           {
+            if (item.Id==ViewBag.x)
+            {
+                   <!-- title -->
+            <div class="col-12">
+                <h1 class="details__title">@item.Name</h1>
+            </div>
+            <!-- end title -->
+            <!-- content -->
+            <div class="col-12 col-xl-6">
+                <div class="card card--details">
+                    <div class="row">
+                        <!-- card cover -->
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
+                            <div class="card__cover">
+                                <img src="@item.ImageURL" alt="">
+                            </div>
+                        </div>
+                        <!-- end card cover -->
+                        <!-- card content -->
+                        <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
+                            <div class="card__content">
+                                <div class="card__wrap">
+                                    @if (ViewBag.Average != null)
+                                     {
+                                        <span class="card__rate"><i class="icon ion-ios-star"></i>@ViewBag.Average</span>
+                                     }
+
+                                    <ul class="card__list" id="avg">
+                                        <li>IMDB : @item.Rating</li>
+                                    </ul>
+                                    <ul class="card__list">
+                                        <li>Kitle : @item.AgeRestriction</li>
+                                    </ul>
+                                </div>
+
+                                <ul class="card__meta">
+                                    <li>
+                                        <span>Tür:</span> <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                    </li>
+                                    <li><span>Çıkış Yılı:</span> @item.ReleaseYear</li>
+                                    <li><span>Sezon:</span> @item.Season</li>
+                                    <li><span>Durum:</span> @item.Status</li>
+                                    <li><span>Yönetmen:</span> <a href="#">@item.Director</a></li>
+                                    <li><span>Senarist:</span> <a href="#">@item.Writer</a></li>
+                                    <li><span>Oyuncular:</span> <a href="#">@item.Cast</a></li>
+                                </ul>
+
+                                <div class="card__description card__description--details">
+                                    @item.Description
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card content -->
+                    </div>
+                </div>
+            </div>
+            <!-- end content -->
+            <!-- player -->
+            <div class="col-12 col-xl-6">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/@item.VideoURL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- end player -->
+            }
+            
+            }
+
+            <div class="col-12">
+                <div class="details__wrap">
+                    <!-- availables -->
+                    <div class="details__devices">
+                        <span class="details__devices-title">Destekleyen Cihazlar:</span>
+                        <ul class="details__devices-list">
+                            <li><i class="icon ion-logo-apple"></i><span>IOS</span></li>
+                            <li><i class="icon ion-logo-android"></i><span>Android</span></li>
+                            <li><i class="icon ion-logo-windows"></i><span>Windows</span></li>
+                            <li><i class="icon ion-md-tv"></i><span>Smart TV</span></li>
+                        </ul>
+                    </div>
+                    <!-- end availables -->
+                    <!-- share -->
+                    <div class="details__share">
+                        <span class="details__share-title">Sosyal Medya:</span>
+
+                        <ul class="details__share-list">
+                            <li class="facebook"><a href="https://tr-tr.facebook.com"><i class="icon ion-logo-facebook"></i></a></li>
+                            <li class="instagram"><a href="https://www.instagram.com/?hl=tr"><i class="icon ion-logo-instagram"></i></a></li>
+                            <li class="twitter"><a href="https://twitter.com/?lang=tr"><i class="icon ion-logo-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- end share -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end details content -->
+</section>
+<!-- end details -->
+
+<!-- content -->
+	<section class="content">
+		<div class="content__head">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<!-- content title -->
+						<h2 class="content__title">Yorumlar</h2>
+						<!-- end content title -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-8 col-xl-8">
+					<!-- content tabs -->
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+                            <div class="row">
+                                <!-- comment -->
+                                <div class="col-12">
+                                    <div class="reviews">
+                                        <ul class="reviews__list">
+
+											<!-- comments -->
+                                            @foreach (var item in Model.s_CommentsViewModels)
+                                            {
+                                                if (item.SeriesId == ViewBag.x && item.Status == true)
+                                                {
+                                                    <li class="reviews__item">
+                                                        <div class="reviews__autor">
+                                                            <img class="reviews__avatar" src="~/Movies/img/comment.png" alt="">
+                                                            <span class="reviews__name">@item.NameSurname</span>
+                                                            <span class="reviews__time">@item.Date</span>
+
+                                                            <span class="reviews__rating"><i class="icon ion-ios-star"></i>@item.Rate</span>
+                                                        </div>
+                                                        <p class="reviews__text">@item.Comment</p>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+
+										<!-- comment form -->
+                                        <b style="color:#939397; font-size:larger; font-family:'Open Sans', sans-serif; margin-top:15px;">Yorum Yap</b>
+                                        @using (Html.BeginForm("SeriesDetails", "Default", FormMethod.Post))
+                                        {
+                                            <input style="margin-top:15px;" type="text" class="form__input" name="Name" placeholder="Ad Soyad">
+                                            <input type="text" class="form__input" name="Email" placeholder="Eposta">
+                                            <textarea class="form__textarea" name="Comment" placeholder="Yorumunuz.."></textarea>
+                                            <div class="form__slider">
+                                                <label class="kanyelele">»</label>
+                                                <select class="rates" asp-for="Rate" asp-items="Model.Rates"></select>
+                                            </div>
+											<b style="color:#df5261; font-family:'Open Sans', sans-serif;">Yorumunuz incelendikten sonra yayınlanacaktır.</b>
+                                            <button type="submit" class="form__btn">Gönder</button>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- end comment -->
+                            </div>
+						</div>
+					</div>
+					<!-- end content tabs -->
+				</div>
+
+				<!-- sidebar -->
+				<div class="col-12 col-lg-4 col-xl-4">
+                    <div class="row">
+                        <!-- section title -->
+                        <div class="col-12">
+                            <h2 class="section__title section__title--sidebar">Önerilen diziler...</h2>
+                        </div>
+                        <!-- end section title -->
+                        <!-- card -->
+                        @foreach (var item in Model.seriesViewModels.Reverse().Take(6))
+                        {
+                                <div class="col-6 col-sm-4 col-lg-6">
+                                    <div class="card">
+                                        <div class="card__cover">
+                                            <img id="images" src="@item.ImageURL" alt="">
+                                            <a href="/Default/SeriesDetails/@item.Id" class="card__play">
+                                                <i class="icon ion-ios-play"></i>
+                                            </a>
+                                        </div>
+                                        <div class="card__content">
+                                            <h3 class="card__title"><a href="/Default/SeriesDetails/@item.Id">@item.Name</a></h3>
+                                            <span class="card__category">
+                                                <a href="/Default/SeriesGenre/@item.Genre.GenreId">@item.Genre.GenreName</a>
+                                            </span>
+                                            <span class="card__rate"><i class="icon ion-ios-star"></i>@item.Rating</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+
+                        <!-- end card -->
+                    </div>
+				</div>
+				<!-- end sidebar -->
+			</div>
+		</div>
+	</section>
+	<!-- end content -->

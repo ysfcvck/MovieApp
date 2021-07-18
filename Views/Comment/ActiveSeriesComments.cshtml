@@ -1,0 +1,49 @@
+﻿@model List<MovieApp.Models.ViewModels.S_CommentsViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<title>Tür Listesi</title>
+<a style="float:left; font-size:inherit; color:#36b9bf;" href="/Comment/InactiveSeriesComments">▹İnaktif Yorumlar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Dizi ID</th>
+            <th>Ad Soyad</th>
+            <th>Eposta</th>
+            <th>Tarih</th>
+            <th>Puan</th>
+            <th>Yorum</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status == true)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.SeriesId)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.NameSurname)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Rate)</td>
+
+                    <td style=" max-width: 475px;">@Html.DisplayFor(modelItem => item.Comment)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                    <td>@Html.ActionLink("İnaktif", "SeriesCommentInactive", new { id = item.Id }, new { @class = "btn btn-warning", onclick = "return confirm('U Y A R I   |   Seçilen yorumu inaktif etmek üzeresiniz..');" })</td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

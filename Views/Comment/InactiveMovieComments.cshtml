@@ -1,0 +1,51 @@
+﻿@model List<MovieApp.Models.ViewModels.M_CommentsViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<title>Tür Listesi</title>
+<a style="float:left; font-size:inherit; color:#36b9bf;" href="/Comment/ActiveMovieComments">▹Aktif Yorumlar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Film ID</th>
+            <th>Ad Soyad</th>
+            <th>Eposta</th>
+            <th>Tarih</th>
+            <th>Puan</th>
+            <th>Yorum</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status==false)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.MovieId)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.NameSurname)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Rate)</td>
+
+                    <td style=" max-width: 475px;">@Html.DisplayFor(modelItem => item.Comment)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                    <td>@Html.ActionLink("Aktif", "MovieCommentActive", new { id = item.Id }, new { @class = "btn btn-success", onclick = "return confirm('U Y A R I   |   Seçilen yorumu aktif etmek üzeresiniz..');" })</td>
+
+                    <td>@Html.ActionLink("Sil", "MovieCommentRemove", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('U Y A R I   |   Yorum silinmek üzere..');" })</td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>

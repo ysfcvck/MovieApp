@@ -1,0 +1,98 @@
+﻿@model MovieApp.Models.ViewModels.LoginViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/Movies/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="~/Movies/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Movies/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Movies/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/Movies/css/nouislider.min.css">
+    <link rel="stylesheet" href="~/Movies/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Movies/css/plyr.css">
+    <link rel="stylesheet" href="~/Movies/css/photoswipe.css">
+    <link rel="stylesheet" href="~/Movies/css/default-skin.css">
+    <link rel="stylesheet" href="~/Movies/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="~/Movies/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="~/Movies/icon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Movies/icon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Movies/icon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Movies/icon/apple-touch-icon-144x144.png">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Dmitry Volkov">
+    <title>Admin Panel</title>
+
+</head>
+<body class="body">
+
+    <div class="sign section--bg" data-bg="~/Movies/img/section/section.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sign__content">
+                        <!-- authorization form -->
+
+                        @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "sign__form" }))
+                        {
+                            <a href="/default/index" class="sign__logo">
+                                <img src="~/Movies/img/Movie_app1.jpg" alt="">
+                            </a>
+
+                            <div class="sign__group">
+                                <input type="text" class="sign__input" name="Email" placeholder="Eposta..">
+                            </div>
+
+                            <div class="sign__group">
+                                <input type="password" class="sign__input" name="Password" placeholder="Şifre..">
+                            </div>
+
+                            <div class="sign__group sign__group--checkbox">
+                                <input id="remember" name="remember" type="checkbox" checked="checked">
+                                <label for="remember">Beni Hatırla</label>
+                            </div>
+
+                            <button class="sign__btn" type="submit">Giriş</button>
+
+                            <span class="sign__text"><a href="signup.html">Kayıt Ol</a></span>
+                            
+                        }
+                        <!-- end authorization form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="~/Movies/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Movies/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Movies/js/owl.carousel.min.js"></script>
+    <script src="~/Movies/js/jquery.mousewheel.min.js"></script>
+    <script src="~/Movies/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="~/Movies/js/wNumb.js"></script>
+    <script src="~/Movies/js/nouislider.min.js"></script>
+    <script src="~/Movies/js/plyr.min.js"></script>
+    <script src="~/Movies/js/jquery.morelines.min.js"></script>
+    <script src="~/Movies/js/photoswipe.min.js"></script>
+    <script src="~/Movies/js/photoswipe-ui-default.min.js"></script>
+    <script src="~/Movies/js/main.js"></script>
+</body>
+</html>
