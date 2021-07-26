@@ -1,23 +1,23 @@
   **User interface**
 - The last 12 contents added to the database appear on the homepage.
-- On the homepage, there is the name of the movie or series, its category, genre, IMDB score, age limit and a short summary.
+- On the homepage, there are the names of the movies/series, and their categories, genres, IMDB scores, age limits and short summaries. 
 - Filtering can be done by name, category or IMDB score in the movie or series catalogue.
 - The details of the movie or series include information such as director, screenwriter, actors and its trailer.
 - Comments can be made and points can be given to the movie or TV series.
-- The average of the points awarded appears on the details page.
-- Comments will not be shown on the page until approved by the admin or moderator.
+- The average of the points that are given appears on the details page.
+- Comments will not be shown until the Admin or the Moderator approves them.
 - There is a button on the top bar to switch to the admin panel.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   **Admin Panel**
-- User, category, movie, series and comment in this panel management can be done.
+- In this panel; user, category, movie, series and comment management can be done.
 - The user with the admin role cannot be deleted from the system.
-- After the comments are checked by the staff, if deemed appropriate, they will be published on the site or the comments may be deleted.
+- After the comments are checked by the Admin/Moderator, if it's appropriate, they will be published on the site. Otherwise they can delete the comments.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-User Interface
+**User Interface**
 
 ![Anasayfa1](https://user-images.githubusercontent.com/81382160/126084686-d014b9cc-1d03-4c86-89d1-072d084a20e6.png)
 ![Anasayfa2](https://user-images.githubusercontent.com/81382160/126084688-a7083be3-ea2c-42e6-9e62-1b6160b3abef.png)
@@ -31,7 +31,7 @@ User Interface
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Admin Panel
+**Admin Panel**
 
 ![PersonelIslemleri](https://user-images.githubusercontent.com/81382160/126084744-813e9c37-006e-4c6d-8f03-45ac7f423384.png)
 ![KullanıcıKayıtFormu](https://user-images.githubusercontent.com/81382160/126084750-41478854-c3ae-4906-add1-d2296abc52ec.png)
