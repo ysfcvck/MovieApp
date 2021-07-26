@@ -1,4 +1,23 @@
-Kullanıcı Arayüzü
+  **User interface**
+- The last 12 contents added to the database appear on the homepage.
+- On the homepage, there is the name of the movie or series, its category, genre, IMDB score, age limit and a short summary.
+- Filtering can be done by name, category or IMDB score in the movie or series catalogue.
+- The details of the movie or series include information such as director, screenwriter, actors and its trailer.
+- Comments can be made and points can be given to the movie or TV series.
+- The average of the points awarded appears on the details page.
+- Comments will not be shown on the page until approved by the admin or moderator.
+- There is a button on the top bar to switch to the admin panel.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  **Admin Panel**
+- User, category, movie, series and comment in this panel management can be done.
+- The user with the admin role cannot be deleted from the system.
+- After the comments are checked by the staff, if deemed appropriate, they will be published on the site or the comments may be deleted.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User Interface
 
 ![Anasayfa1](https://user-images.githubusercontent.com/81382160/126084686-d014b9cc-1d03-4c86-89d1-072d084a20e6.png)
 ![Anasayfa2](https://user-images.githubusercontent.com/81382160/126084688-a7083be3-ea2c-42e6-9e62-1b6160b3abef.png)
@@ -10,7 +29,9 @@ Kullanıcı Arayüzü
 ![FilmKataloğu3](https://user-images.githubusercontent.com/81382160/126084707-85a2e426-c9c7-4140-aa63-d44a8601901e.png)
 ![Login](https://user-images.githubusercontent.com/81382160/126084708-79e47c52-a8e9-4b43-a66f-15ed3cb3320e.png)
 
-Yönetici Paneli
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Admin Panel
 
 ![PersonelIslemleri](https://user-images.githubusercontent.com/81382160/126084744-813e9c37-006e-4c6d-8f03-45ac7f423384.png)
 ![KullanıcıKayıtFormu](https://user-images.githubusercontent.com/81382160/126084750-41478854-c3ae-4906-add1-d2296abc52ec.png)
