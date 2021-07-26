@@ -1,4 +1,4 @@
-  **User interface**
+  **User Interface**
 - The last 12 contents added to the database appear on the homepage.
 - On the homepage, there are the names of the movies/series, and their categories, genres, IMDB scores, age limits and short summaries. 
 - Filtering can be done by name, category or IMDB score in the movie or series catalogue.
